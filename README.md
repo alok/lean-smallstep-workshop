@@ -91,11 +91,15 @@ only under the ignored `.lake` build folder and contain no exercise solutions.
 
 ## Rocq-style inversion
 
-The exercise file imports the dependency-free workshop tactic from
+Both main Lean files import the dependency-free workshop tactic from
 `Inversion.lean` (version 0.3.0). Use `inversion h`, `inversion h as [...]`,
 or `inversion_clear h`, and inspect the resulting cases in the Infoview.
 Ordinary inversion retains the original proof and useful index equations;
 `inversion h; subst_vars` requests substitution explicitly.
+
+The exercise namespace opens `Expr`, `Step`, and `Multi`, so `constant`,
+`add`, `addConstants`, `stepLeft`, `stepRight`, `reflexive`, and `prependStep`
+are available directly. Use `Value.constant` for the value constructor.
 
 The behavior for this companion's `Value` and `Step` relations was compared
 with Rocq 9.3.0. Names and hypothesis order can differ. See

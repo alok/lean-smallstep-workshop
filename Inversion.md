@@ -114,10 +114,8 @@ an actual heartbeat-exhaustion diagnostic check, and an audit rejecting
 dependency sets. The audit permits Lean's standard `propext` if core
 heterogeneous elimination requires it in later tests.
 
-`SmallstepFixture.lean` is an unchanged snapshot of the live
-`Smallstep.lean`, including its existing worked examples. No exercise module is
-imported. Fixture SHA-256:
-`a2d5e6d14ac97986b87da5b7075e47a1c45338bb7cb074ce0ac63cb4abcac9c0`.
+`InversionTests.lean` checks the project's actual `Smallstep.lean` definitions.
+No exercise module is imported.
 
 Existing alternatives were checked before implementing the interface:
 

@@ -23,7 +23,7 @@ Place the cursor at a `sorry` to see the goal. Replace one hole at a time.
 -/
 
 namespace Smallstep
-open Expr
+open Expr Step Multi
 
 /-- Step the right operand with a finished left operand. SF original:
 `SimpleArith1.test_step_2`, adapted here to the equivalent value-aware `Step`. -/

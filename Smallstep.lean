@@ -1,4 +1,5 @@
 import Std
+import Inversion
 
 set_option linter.missingDocs true
 
@@ -64,6 +65,8 @@ inductive Step : Expr → Expr → Prop where
       (leftIsValue : Value left) (rightStep : Step right reducedRight) :
       Step (add left right) (add left reducedRight)
 
+open Step
+
 -- SF uses -->; Lean treats adjacent -- as a line comment.
 -- A space between the hyphens keeps the chapter's arrow parser-safe: - ->.
 /-- One reduction step. SF original notation: `t --> t'` for `step t t'`;
@@ -98,6 +101,8 @@ inductive Multi {State : Type u} (relation : State → State → Prop) :
       (firstStep : relation start intermediate)
       (remainingSteps : Multi relation intermediate finish) :
       Multi relation start finish
+
+open Multi
 
 /-- Lean-only abbreviation for SF's `multi step`: zero or more small steps.
 It names a specialization, rather than a separately named SF definition. -/
@@ -139,12 +144,14 @@ example (left replacement right : Expr) (sameExpression : left = replacement) :
   Module                          namespace
   Theorem name : statement.       theorem name : statement := by
   intros x H                      intro expression hypothesis
-  apply ST_P1                     apply Step.stepLeft
+  apply ST_P1                     apply stepLeft (after open Step)
   exact H                         exact hypothesis
   reflexivity                     rfl
   rewrite H                       rw [hypothesis]
   rewrite <- H                    rw [← hypothesis]
   destruct H                      cases hypothesis
+  inversion H                     inversion hypothesis
+  inversion H; subst              inversion hypothesis; subst_vars
   induction H                     induction hypothesis
   Admitted                        sorry (an unchecked proof placeholder)
 
