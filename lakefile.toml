@@ -1,8 +1,24 @@
 name = "lean-smallstep"
-version = "0.1.0"
-defaultTargets = ["Smallstep"]
+version = "0.2.0"
+defaultTargets = ["Smallstep", "Inversion", "InversionTests", "InversionAxiomChecks", "InversionFailureChecks"]
 enableArtifactCache = false
 
 [[lean_lib]]
 name = "Smallstep"
 roots = ["Smallstep"]
+
+[[lean_lib]]
+name = "Inversion"
+roots = ["Inversion"]
+
+[[lean_lib]]
+name = "InversionTests"
+roots = ["InversionTests"]
+
+[[lean_lib]]
+name = "InversionAxiomChecks"
+roots = ["InversionAxiomChecks"]
+
+[[lean_lib]]
+name = "InversionFailureChecks"
+roots = ["InversionFailureChecks"]

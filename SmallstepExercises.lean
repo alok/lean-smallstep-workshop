@@ -1,4 +1,5 @@
 import Smallstep
+import Inversion
 
 set_option linter.missingDocs true
 

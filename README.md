@@ -49,7 +49,7 @@ lake build
 lake env lean SmallstepExercises.lean
 ```
 
-`lake build` checks the core and worked examples. The second command checks
+`lake build` checks the core, worked examples, and inversion regressions. The second command checks
 the saved exercise file. Unfinished tactic proofs can report unsolved goals;
 each remaining `sorry` produces a warning. A file accepted with those warnings
 does not prove the exercises.
@@ -88,6 +88,24 @@ python3 check_exercises.py --self-test
 The controls verify that trusted worked proofs pass and direct/indirect holes,
 added axioms, and changed theorem statements fail. The control files are created
 only under the ignored `.lake` build folder and contain no exercise solutions.
+
+## Rocq-style inversion
+
+The exercise file imports the dependency-free workshop tactic from
+`Inversion.lean` (version 0.3.0). Use `inversion h`, `inversion h as [...]`,
+or `inversion_clear h`, and inspect the resulting cases in the Infoview.
+Ordinary inversion retains the original proof and useful index equations;
+`inversion h; subst_vars` requests substitution explicitly.
+
+The behavior for this companion's `Value` and `Step` relations was compared
+with Rocq 9.3.0. Names and hypothesis order can differ. See
+[Inversion.md](Inversion.md) for naming syntax, supported behavior, limits,
+and the remaining differences from Rocq.
+
+`lake build` also checks 32 inversion regressions, negative/rollback checks,
+resource limits, and their axiom audit. Those checks use the actual core
+module and contain no completed workshop exercise proofs. The grader's
+positive controls include a proof produced by inversion.
 
 ## Cursor and notation
 
