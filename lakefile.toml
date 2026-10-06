@@ -1,0 +1,8 @@
+name = "lean-smallstep"
+version = "0.1.0"
+defaultTargets = ["Smallstep"]
+enableArtifactCache = false
+
+[[lean_lib]]
+name = "Smallstep"
+roots = ["Smallstep"]
